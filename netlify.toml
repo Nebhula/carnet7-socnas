@@ -1,0 +1,21 @@
+[build]
+functions = "netlify/functions"
+
+[[redirects]]
+from = "/api/checkPassword"
+to = "/.netlify/functions/checkPassword"
+status = 200
+
+# AÑADE ESTO NUEVO (para el modo offline de la PWA):
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = false
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
